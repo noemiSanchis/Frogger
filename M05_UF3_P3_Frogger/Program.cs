@@ -1,8 +1,9 @@
 ﻿using System;
-//using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
-//using System.Numerics;
-//using System.Xml.Linq;
+using System.Numerics;
+using System.Xml.Linq;
+
 
 namespace M05_UF3_P3_Frogger
 {
@@ -10,8 +11,11 @@ namespace M05_UF3_P3_Frogger
     {
         static void Main(string[] args)
         {
-            Console.WindowHeight = Console.LargestWindowHeight - 10;
-            Console.WindowWidth = Console.LargestWindowWidth - 10;
+            Console.SetWindowSize(Console.LargestWindowWidth - 10, Console.LargestWindowHeight - 10);
+            Console.SetBufferSize(Console.LargestWindowWidth - 10, Console.LargestWindowHeight - 10);
+            Console.SetWindowSize(Console.LargestWindowWidth - 10, Console.LargestWindowHeight - 10);
+
+
             Console.CursorVisible = false;
 
             Lane[] lanes = new Lane[5];
@@ -31,10 +35,10 @@ namespace M05_UF3_P3_Frogger
                     lane.Update();
                 }
                 player.Draw();
-                //movimiento
+              
                 Vector2Int pulsado = Utils.Input();
                 gameState = player.Update(pulsado, lanes.ToList());
-                // Pantalla
+                
                 Console.Clear();
                 foreach (Lane lane in lanes)
                 {
@@ -44,7 +48,7 @@ namespace M05_UF3_P3_Frogger
                 player.Draw();
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ForegroundColor = ConsoleColor.Green;
-
+                //otro
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.SetCursorPosition(0, Utils.MAP_HEIGHT);
                 Console.Write("Tiempo: {0:0.00}", TimeManager.time);
